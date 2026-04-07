@@ -4,7 +4,7 @@
              x:Class="Layout.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
+        <HorizontalStackLayout
             Padding="30,0"
             Spacing="25">
             <Image
@@ -12,9 +12,7 @@
                 HeightRequest="185"
                 Aspect="AspectFit"
                 SemanticProperties.Description="dot net bot in a submarine number ten" />
-            <Label
-                Text="Hello">
-            </Label>
+            
 
             <Label
                 Text="Hello, World!"
@@ -33,7 +31,7 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
-        </VerticalStackLayout>
+        </HorizontalStackLayout>
     </ScrollView>
 
 </ContentPage>
