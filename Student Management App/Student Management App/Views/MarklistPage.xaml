@@ -1,0 +1,62 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Student_Management_App.Views.MarklistPage"
+             BackgroundColor="#0F172A">
+    
+     <VerticalStackLayout Padding="20" Spacing="15">
+         <Label 
+                  Text="Student Marklist"
+                  FontSize="28"
+                  FontAttributes="Bold"
+                  TextColor="White"/>
+
+
+        <CollectionView ItemsSource="{Binding Students}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame CornerRadius="15"
+                            Padding="10"
+                            Margin="10"
+                            BackgroundColor="#1E293B"
+                            HasShadow="True">
+                       <Grid ColumnDefinitions="300,100,100,100,100,10"> 
+
+                            <Label Text="{Binding Name}"
+                                   FontSize="18"
+                                   TextColor="White"
+                                   Grid.Column="0"/>
+
+                            <Label Grid.Column="1"
+                                   Text="{Binding Tamil}"
+                                   FontSize="18"
+                                   TextColor="#22C55E"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Column="2"
+                                   Text="{Binding English}"
+                                   FontSize="18"
+                                   TextColor="#22C55E"
+                                   FontAttributes="Bold"/>
+
+                            <Label Grid.Column="3"
+                                   Text="{Binding Math}"
+                                   FontSize="18"
+                                   TextColor="#22C55E"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Column="4"
+                                   Text="{Binding Mark}"
+                                   FontSize="18"
+                                   TextColor="#22C55E"
+                                   FontAttributes="Bold"/>
+
+                        </Grid>
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>

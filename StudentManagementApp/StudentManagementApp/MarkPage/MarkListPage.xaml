@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentManagementApp.MarkListPage"
+             Title="Marks">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Label Text="Enter Marks"
+               FontSize="24"
+               HorizontalOptions="Center"/>
+
+        <Entry x:Name="m1" Placeholder="Mark 1" Keyboard="Numeric"/>
+        <Entry x:Name="m2" Placeholder="Mark 2" Keyboard="Numeric"/>
+        <Entry x:Name="m3" Placeholder="Mark 3" Keyboard="Numeric"/>
+
+        <Button Text="Calculate"
+                Clicked="OnCalculate"/>
+
+        <Label x:Name="result"
+               Text="Total: 0"
+               FontSize="20"
+               HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>

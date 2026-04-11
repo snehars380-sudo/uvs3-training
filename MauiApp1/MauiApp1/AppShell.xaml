@@ -1,0 +1,21 @@
+<Shell
+    x:Class="MauiApp1.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MauiApp1.Views;assembly=MauiApp1"
+    Title="Student Management">
+
+    <!-- Login page -->
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
+
+    <!-- Main TabBar after login -->
+    <TabBar Route="MainPage">
+        <Tab Title="Marklist">
+            <ShellContent ContentTemplate="{DataTemplate views:MarklistPage}" />
+        </Tab>
+        <Tab Title="Details">
+            <ShellContent ContentTemplate="{DataTemplate views:StudentDetailsPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

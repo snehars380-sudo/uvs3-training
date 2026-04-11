@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Student_Management_App.Views.DetailsPage"
+             BackgroundColor="#0F172A">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        
+        
+        <Label Text="Student Details"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="White"/>
+        
+        
+        <CollectionView ItemsSource="{Binding Students}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 15"
+                            Padding="10"
+                            BackgroundColor="#1E293B">
+
+                        <VerticalStackLayout Spacing="6">
+
+
+                            <Label Text="{Binding Name}"
+                                   FontSize="18"
+                                   TextColor="White"
+                                   FontAttributes="Bold"/>
+
+
+                            <Label Text="{Binding Age, StringFormat='Age: {0}'}"
+                                   TextColor="#CBD5F5"/>
+
+                            <Label Text="{Binding Deparetment}"
+                                   TextColor="#38BDF8"/>
+
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

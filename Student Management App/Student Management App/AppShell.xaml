@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="StudentManagementApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Student_Management_App.Views"
+    Shell.FlyoutBehavior="Flyout">
+
+    <!-- Flyout Menu Header -->
+    <Shell.FlyoutHeader>
+        <StackLayout Padding="20" BackgroundColor="LightBlue">
+            <Label Text="Student Management"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+        </StackLayout>
+    </Shell.FlyoutHeader>
+
+    <!-- Home Page -->
+    <FlyoutItem Title="Home" Icon="home.png">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate views:HomePage}" />
+    </FlyoutItem>
+
+    <!-- Students List Page -->
+    <FlyoutItem Title="Students" Icon="students.png">
+        <ShellContent
+            Title="Student List"
+            ContentTemplate="{DataTemplate views:StudentListPage}" />
+    </FlyoutItem>
+
+    <!-- Add Student Page -->
+    <FlyoutItem Title="Add Student" Icon="add.png">
+        <ShellContent
+            Title="Add Student"
+            ContentTemplate="{DataTemplate views:AddStudentPage}" />
+    </FlyoutItem>
+
+</Shell>
