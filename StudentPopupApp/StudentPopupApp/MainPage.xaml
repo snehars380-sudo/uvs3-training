@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="StudentPopupApp.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <!-- Add Button -->
+        <Button Text="Add Student" Clicked="OnAddClicked"/>
+
+        <!-- Heading -->
+        <Grid ColumnDefinitions="2*,2*,*,Auto,Auto" BackgroundColor="LightGray" Padding="5">
+            <Label Text="Name" FontAttributes="Bold"/>
+            <Label Text="Reg No" Grid.Column="1" FontAttributes="Bold"/>
+            <Label Text="Mark" Grid.Column="2" FontAttributes="Bold"/>
+            <Label Text="Edit" Grid.Column="3" FontAttributes="Bold"/>
+            <Label Text="Delete" Grid.Column="4" FontAttributes="Bold"/>
+        </Grid>
+
+        <!-- List -->
+        <CollectionView ItemsSource="{Binding Students}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="2*,2*,*,Auto,Auto" Padding="5">
+
+                        <Label Text="{Binding Name}" />
+                        <Label Text="{Binding RegNo}" Grid.Column="1"/>
+                        <Label Text="{Binding Mark}" Grid.Column="2"/>
+
+                        <Button Text="Edit"
+                                Grid.Column="3"
+                                Clicked="OnEditClicked"/>
+
+                        <Button Text="Delete"
+                                Grid.Column="4"
+                                Clicked="OnDeleteClicked"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>
