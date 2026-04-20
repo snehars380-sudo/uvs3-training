@@ -6,6 +6,7 @@ namespace DailySpendTracker;
 public partial class MainPage : ContentPage
 {
     private readonly DatabaseService _db;
+    private Expense editingItem = null;
 
     public MainPage(DatabaseService db)
     {
@@ -24,20 +25,34 @@ public partial class MainPage : ContentPage
         totalLabel.Text = $"Total: {total}";
     }
 
+    // ADD + UPDATE
     private async void OnAddClicked(object sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(titleEntry.Text) ||
             string.IsNullOrWhiteSpace(amountEntry.Text))
             return;
 
-        var expense = new Expense
+        if (editingItem != null)
         {
-            Title = titleEntry.Text,
-            Amount = double.Parse(amountEntry.Text),
-            Date = DateTime.Now
-        };
+            // UPDATE
+            editingItem.Title = titleEntry.Text;
+            editingItem.Amount = double.Parse(amountEntry.Text);
 
-        await _db.AddExpense(expense);
+            await _db.UpdateExpense(editingItem);
+            editingItem = null;
+        }
+        else
+        {
+            // ADD
+            var expense = new Expense
+            {
+                Title = titleEntry.Text,
+                Amount = double.Parse(amountEntry.Text),
+                Date = DateTime.Now
+            };
+
+            await _db.AddExpense(expense);
+        }
 
         titleEntry.Text = "";
         amountEntry.Text = "";
@@ -45,14 +60,30 @@ public partial class MainPage : ContentPage
         LoadData();
     }
 
+    // DELETE
     private async void OnDeleteSwipe(object sender, EventArgs e)
     {
-        var item = (sender as SwipeItem).BindingContext as Expense;
+        var item = (sender as SwipeItem).CommandParameter as Expense;
 
         if (item != null)
         {
             await _db.DeleteExpense(item);
             LoadData();
+        }
+    }
+
+    // EDIT
+    private void OnEditClicked(object sender, EventArgs e)
+    {
+        var btn = sender as Button;
+        var item = btn.CommandParameter as Expense;
+
+        if (item != null)
+        {
+            editingItem = item;
+
+            titleEntry.Text = item.Title;
+            amountEntry.Text = item.Amount.ToString();
         }
     }
 }

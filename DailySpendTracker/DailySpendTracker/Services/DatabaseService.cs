@@ -30,6 +30,12 @@ namespace DailySpendTracker.Services
             await _db.InsertAsync(expense);
         }
 
+        public async Task UpdateExpense(Expense expense)
+        {
+            await Init();
+            await _db.UpdateAsync(expense);
+        }
+
         public async Task DeleteExpense(Expense expense)
         {
             await Init();

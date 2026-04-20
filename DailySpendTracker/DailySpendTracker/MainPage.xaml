@@ -21,35 +21,50 @@
                Placeholder="Amount"
                Keyboard="Numeric"/>
 
-        <Button Text="Add Expense"
+        <Button Text="Add / Update"
                 Clicked="OnAddClicked"/>
 
         <CollectionView x:Name="expenseList">
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
                     <SwipeView>
 
+                        <!-- DELETE -->
                         <SwipeView.RightItems>
                             <SwipeItems>
                                 <SwipeItem Text="Delete"
                                            BackgroundColor="Red"
+                                           CommandParameter="{Binding .}"
                                            Invoked="OnDeleteSwipe"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
 
                         <Frame Padding="10" Margin="5">
+
                             <VerticalStackLayout>
+
                                 <Label Text="{Binding Title}" FontSize="18"/>
                                 <Label Text="{Binding Amount}" />
                                 <Label Text="{Binding Date}" FontSize="12"/>
+
+                                <!-- EDIT BUTTON -->
+                                <Button Text="Edit"
+                                        BackgroundColor="Orange"
+                                        TextColor="White"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="OnEditClicked"/>
+
                             </VerticalStackLayout>
+
                         </Frame>
 
                     </SwipeView>
 
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+
         </CollectionView>
 
     </VerticalStackLayout>
