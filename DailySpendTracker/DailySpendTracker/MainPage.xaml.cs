@@ -22,7 +22,9 @@ public partial class MainPage : ContentPage
         expenseList.ItemsSource = list;
 
         double total = list.Sum(x => x.Amount);
-        totalLabel.Text = $"Total: {total}";
+
+        totalLabel.Text = $"Total: ₹ {total}";
+        countLabel.Text = $"Expenses: {list.Count}";
     }
 
     // ADD + UPDATE
@@ -34,20 +36,20 @@ public partial class MainPage : ContentPage
 
         if (editingItem != null)
         {
-            // UPDATE
             editingItem.Title = titleEntry.Text;
             editingItem.Amount = double.Parse(amountEntry.Text);
+            editingItem.Category = categoryPicker.SelectedItem?.ToString() ?? "Other";
 
             await _db.UpdateExpense(editingItem);
             editingItem = null;
         }
         else
         {
-            // ADD
             var expense = new Expense
             {
                 Title = titleEntry.Text,
                 Amount = double.Parse(amountEntry.Text),
+                Category = categoryPicker.SelectedItem?.ToString() ?? "Other",
                 Date = DateTime.Now
             };
 
@@ -56,6 +58,7 @@ public partial class MainPage : ContentPage
 
         titleEntry.Text = "";
         amountEntry.Text = "";
+        categoryPicker.SelectedIndex = -1;
 
         LoadData();
     }
@@ -84,6 +87,7 @@ public partial class MainPage : ContentPage
 
             titleEntry.Text = item.Title;
             amountEntry.Text = item.Amount.ToString();
+            categoryPicker.SelectedItem = item.Category;
         }
     }
 }
